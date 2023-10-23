@@ -8,21 +8,21 @@
  */
 void swap(listint_t **list, listint_t *new, listint_t *node)
 {
-    listint_t *aprev = new->prev;
-    listint_t *bnext = node->next;
+	listint_t *aprev = new->prev;
+	listint_t *bnext = node->next;
 
-    if (aprev)
-        aprev->next = node;
-    if (bnext)
-        bnext->prev = new;
+	if (aprev)
+		aprev->next = node;
+	if (bnext)
+		bnext->prev = new;
 
-    new->prev = node;
-    node->prev = aprev;
-    new->next = bnext;
-    node->next = new;
+	new->prev = node;
+	node->prev = aprev;
+	new->next = bnext;
+	node->next = new;
 
-    if (node->prev == NULL)
-        *list = node;
+	if (node->prev == NULL)
+		*list = node;
 }
 /**
  * insertion_sort_list - sorts a doubly linked list with
@@ -31,27 +31,28 @@ void swap(listint_t **list, listint_t *new, listint_t *node)
  */
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *current;
-    listint_t *temp;
+	listint_t *current;
+	listint_t *temp;
 
-    if (list == NULL || *list == NULL)
-        return;
+	if (list == NULL || *list == NULL)
+		return;
 
-    current = *list;
-    current = current->next;
+	current = *list;
+	current = current->next;
 
-    while (current)
-    {
-        temp = current;
-        while (temp)
-        {
-            if (temp->n > current->n)
-            {
-                swap(list, temp, current);
-                print_list(*list);
-            }
-            temp = temp->prev;
-        }
-        current = current->next;
-    }
+	while (current)
+	{
+		temp = current;
+		while (temp)
+		{
+			if (temp->n > current->n)
+			{
+				swap(list, temp, current);
+				print_list(*list);
+			}
+			temp = temp->prev;
+		}
+		current = current->next;
+	}
+
 }
